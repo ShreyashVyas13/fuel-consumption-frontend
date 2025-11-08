@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import "./App.css";
 
 function App() {
   const [displacement, setDisplacement] = useState("");
@@ -10,7 +9,7 @@ function App() {
 
   const handlePredict = async () => {
     if (!displacement) {
-      setError("⚠️ Please enter engine displacement (cc).");
+      setError("Please enter engine displacement (cc).");
       return;
     }
 
@@ -18,60 +17,59 @@ function App() {
     setLoading(true);
 
     try {
-<<<<<<< HEAD
       const response = await axios.post("https://fuel-consumption-backend.onrender.com/predict", {
-=======
-      const response = await axios.post("https://fuel-consumption-backend.onrender.com", {
->>>>>>> 8565906ffc23b7fbed99faf4b89d41ba249a75e4
         displacement: parseFloat(displacement),
       });
       setPredictedMPG(response.data.predicted_mpg);
     } catch (err) {
-      setError("❌ Failed to get prediction. Check backend connection.");
+      setError("Failed to get prediction. Check backend connection.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="app">
-      <div className="card">
-        <h1 className="title">🚗 Fuel Consumption Predictor</h1>
-        <p className="subtitle">
-          Predict your car’s mileage (MPG & km/l) based on engine displacement.
-        </p>
+    <div
+      style={{
+        fontFamily: "sans-serif",
+        textAlign: "center",
+        marginTop: "80px",
+      }}
+    >
+      <h1>🚗 Fuel Consumption Predictor</h1>
+      <p>Enter your car's engine displacement (cc) to predict mileage (MPG)</p>
 
-        <div className="input-section">
-          <input
-            type="number"
-            placeholder="Enter displacement (cc)"
-            value={displacement}
-            onChange={(e) => setDisplacement(e.target.value)}
-            className="input-box"
-          />
-          <button onClick={handlePredict} className="predict-btn">
-            {loading ? "⏳ Predicting..." : "Predict Mileage"}
-          </button>
+      <input
+        type="number"
+        placeholder="e.g., 1600"
+        value={displacement}
+        onChange={(e) => setDisplacement(e.target.value)}
+        style={{ padding: "8px", marginRight: "10px" }}
+      />
+      <button
+        onClick={handlePredict}
+        style={{
+          padding: "8px 15px",
+          backgroundColor: "#007bff",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+      >
+        Predict
+      </button>
+
+      {loading && <p>⏳ Predicting...</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {predictedMPG !== null && (
+        <div style={{ marginTop: "20px" }}>
+          <h2>Predicted Mileage: {predictedMPG} MPG</h2>
+          <p>
+            (In km/l ≈ {(predictedMPG * 0.425144).toFixed(2)} km/l)
+          </p>
         </div>
-
-        {error && <div className="error">{error}</div>}
-
-        {predictedMPG !== null && (
-          <div className="result">
-            <h2>Predicted Mileage:</h2>
-            <p>
-              <strong>{predictedMPG.toFixed(2)}</strong> MPG
-            </p>
-            <p>
-              ≈ <strong>{(predictedMPG * 0.425144).toFixed(2)}</strong> km/l
-            </p>
-          </div>
-        )}
-
-        <footer className="footer">
-          Built with ❤️ by <span>Shreyash</span>
-        </footer>
-      </div>
+      )}
     </div>
   );
 }
