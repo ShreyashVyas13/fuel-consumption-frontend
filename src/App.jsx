@@ -18,7 +18,11 @@ function App() {
     setLoading(true);
 
     try {
+<<<<<<< HEAD
       const response = await axios.post("https://fuel-consumption-backend.onrender.com/predict", {
+=======
+      const response = await axios.post("https://fuel-consumption-backend.onrender.com", {
+>>>>>>> 8565906ffc23b7fbed99faf4b89d41ba249a75e4
         displacement: parseFloat(displacement),
       });
       setPredictedMPG(response.data.predicted_mpg);
