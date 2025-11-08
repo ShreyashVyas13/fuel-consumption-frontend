@@ -1,0 +1,196 @@
+/* === GLOBAL STYLE === */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0a0f1f, #1a2740);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* === MAIN CONTAINER === */
+.app {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* === CARD === */
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 50px 40px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
+}
+
+/* === TITLES === */
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00d9ff;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #bbb;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+/* === INPUT AREA === */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-box {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: 0.3s;
+}
+
+.input-box:focus {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid #00d9ff;
+  box-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
+}
+
+/* === BUTTON === */
+.predict-btn {
+  background: #00d9ff;
+  color: #fff;
+  border: none;
+  padding: 12px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.predict-btn:hover {
+  background: #00b7e0;
+  transform: scale(1.05);
+}
+
+/* === RESULT BOX === */
+.result {
+  margin-top: 25px;
+  padding: 15px;
+  border-radius: 14px;
+  background: rgba(0, 217, 255, 0.08);
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  color: #dff;
+  animation: slideUp 0.5s ease-out;
+}
+
+.result h2 {
+  color: #00d9ff;
+  margin-bottom: 8px;
+}
+
+.result strong {
+  color: #fff;
+}
+
+/* === ERROR MESSAGE === */
+.error {
+  color: #ff6b6b;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/* === FOOTER === */
+.footer {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.footer span {
+  color: #00d9ff;
+}
+
+/* === ANIMATIONS === */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+    padding: 35px 25px;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .input-box, .predict-btn {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .result h2 {
+    font-size: 1.1rem;
+  }
+
+  .result p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 95%;
+    padding: 30px 20px;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  .footer {
+    font-size: 0.8rem;
+  }
+}
